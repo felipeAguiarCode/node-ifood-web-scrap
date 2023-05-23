@@ -1,4 +1,5 @@
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer'
+require("dotenv").config()
 
 export async function getTokenCollected() {
   const FIXED_POINT = 'https://www.ifood.com.br/delivery/sao-paulo-sp/drogaria-farmais-luz/d3624119-36a2-499e-8a99-6286d71f3dfb?item=c461612e-2352-4644-a459-893ae3877607'
@@ -6,7 +7,17 @@ export async function getTokenCollected() {
   const HTTP_INTERCEPTED = '/catalog?category_items_size=12'
 
   const browser = await puppeteer.launch({
-    headless: "new"
+    args: [
+      "--disable-setuid-sandbox",
+      "--no-sandbox",
+      "--single-process",
+      "--no-zygote",
+    ],
+    executablePath:
+      process.env.NODE_ENV === 'production'
+        ? process.env.PUPPETEER.EXECUTABLE_PATH
+        : puppeteer.executablePath(),
+    // headless: "new"
   })
 
   const page = await browser.newPage()
