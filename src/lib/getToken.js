@@ -18,7 +18,7 @@ export async function getTokenCollected() {
       process.env.NODE_ENV === 'production'
         ? process.env.PUPPETEER.EXECUTABLE_PATH
         : puppeteer.executablePath(),
-    // headless: "new"
+    headless: "new"
   })
 
   const page = await browser.newPage()
