@@ -1,5 +1,6 @@
 import puppeteer from 'puppeteer'
-require("dotenv").config()
+import dotenv from "dotenv"
+dotenv.config()
 
 export async function getTokenCollected() {
   const FIXED_POINT = 'https://www.ifood.com.br/delivery/sao-paulo-sp/drogaria-farmais-luz/d3624119-36a2-499e-8a99-6286d71f3dfb?item=c461612e-2352-4644-a459-893ae3877607'
