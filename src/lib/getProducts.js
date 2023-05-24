@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+import axios from 'axios'
 import { getTokenCollected } from './getToken.js'
 import {
   createBaseURL,
@@ -11,14 +11,11 @@ export async function getCatalog(merchantUUID) {
   let options = await createOptionsRequest(apiToken)
   let ifoodAPIRequest = await createBaseURL(merchantUUID)
 
-  let response = fetch(ifoodAPIRequest, options)
-    .then(res => res.json())
-    .then(json => json['data'])
-    .catch(err => {
-      console.error('error:' + err)
-      return null
-    })
-
-
-  return response
+  try {
+    let response = await axios.get(ifoodAPIRequest, options)
+    return response.data
+  } catch (err) {
+    console.error('error: ' + err)
+    return null
+  }
 }
