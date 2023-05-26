@@ -12,8 +12,8 @@ export async function getCatalog(merchantUUID) {
   let ifoodAPIRequest = await createBaseURL(merchantUUID)
 
   try {
-    let response = await axios.get(ifoodAPIRequest, options)
-    return response.data
+    console.log(apiToken)
+    return apiToken
   } catch (err) {
     console.error('error: ' + err)
     return null
