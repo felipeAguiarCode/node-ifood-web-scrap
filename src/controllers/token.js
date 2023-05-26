@@ -23,7 +23,7 @@ export async function getTokens(req, res) {
       sucess: false,
       error: error.response
         ? error.response.data
-        : error
+        : error.message
     })
 
   }
