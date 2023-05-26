@@ -23,7 +23,7 @@ export async function getTokens(req, res) {
       sucess: false,
       error: error.response
         ? error.response.data
-        : 'There was an inssue on the server'
+        : error
     })
 
   }
