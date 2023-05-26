@@ -6,9 +6,7 @@ export async function catalogService(path) {
   const { SEARCH_MERCHANTS_URL, KEYWORD } = SITE_MAP
 
   //config browser and startup links
-  const browser = await puppeteer.launch({
-    headless: "new"
-  })
+  const browser = await puppeteer.launch()
   const page = await browser.newPage();
 
   let products = [];
